@@ -20,6 +20,18 @@ def wikipedia_game_solver(start_page, target_page):
     print('Working on it...')
     start_time = time.time()
   
+    visited = []
+    queue = Queue()
+    path = []
+
+    visited.append(start_page)
+    queue.get()
+
+
+    while not queue.empty():
+
+
+    
     # FINISH THE CODE HERE
 
     end_time = time.time()

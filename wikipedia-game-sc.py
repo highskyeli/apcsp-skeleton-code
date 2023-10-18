@@ -24,12 +24,31 @@ def wikipedia_game_solver(start_page, target_page):
     queue = Queue()
     path = []
 
+    queue.put(start_page.title)
     visited.append(start_page)
     queue.get()
-
+    
 
     while not queue.empty():
+        current_title = queue.get()
+        if current_title == target_page.title:
+            break
 
+        current_page = wiki_wiki.page(current_title)
+        next_level = fetch_links(current_page)
+        visited.append(current_title)
+
+        for node in next_level:
+            if node not in visited:
+                queue.put(node)
+                parent[node] = current_title
+
+    child = target_page.title
+    while child != start_page.title:
+        path.append(child)
+        child = parent[child]
+path.append(start_page.title)
+path.reverse()
 
     
     # FINISH THE CODE HERE
